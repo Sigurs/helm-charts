@@ -186,6 +186,12 @@ containerSecurityContext:
   runAsUser: 1001
   runAsNonRoot: true
   readOnlyRootFilesystem: false
+  allowPrivilegeEscalation: false
+  seccompProfile:
+    type: RuntimeDefault
+  capabilities:
+    drop:
+      - ALL
 
 #%%OTHER_PARAMETERS_RELATED_TO_THIS_CONTAINER/POD%%
 
