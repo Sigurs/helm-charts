@@ -103,7 +103,7 @@ replicaCount: 1
 ## @param jellyfin.containerPorts.https Jellyfin HTTPS container port
 ##
 containerPorts:
-  http: 80
+  http: 8096
   https: 443
 ## Configure extra options for Jellyfin containers' liveness and readiness probes
 ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/#configure-probes

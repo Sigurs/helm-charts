@@ -113,7 +113,7 @@ spec:
             {{- end }}
           ports:
             - containerPort: foo
-              protocol: bar
+              protocol: tcp
           {{- if .Values.resources }}
           resources: {{- toYaml .Values.resources | nindent 12 }}
           {{- end }}
@@ -133,12 +133,6 @@ spec:
           {{- end }}
           {{- end }}
           volumeMounts:
-            - name: foo
-              mountPath: {{ .Values.persistence.mountPath }}
-              {{- if .Values.persistence.subPath }}
-              subPath: {{ .Values.persistence.subPath }}
-              {{- end }}
-              readOnly: true
             {{- if .Values.extraVolumeMounts }}
             {{- include "common.tplvalues.render" (dict "value" .Values.extraVolumeMounts "context" $) | nindent 12 }}
             {{- end }}
