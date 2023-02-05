@@ -340,8 +340,7 @@ service:
   ## @param service.ports.https Jellyfin service HTTPS port
   ##
   ports:
-    http: 80
-    https: 443
+    http: 8096
   ## Node ports to expose
   ## @param service.nodePorts.http Node port for HTTP
   ## @param service.nodePorts.https Node port for HTTPS
