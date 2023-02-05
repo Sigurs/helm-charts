@@ -1,0 +1,28 @@
+annotations:
+  category: media
+  licenses: Apache-2.0
+apiVersion: v2
+appVersion: latest
+dependencies:
+  - name: common
+    repository: https://charts.bitnami.com/bitnami
+    tags:
+      - bitnami-common
+    version: 2.2.3
+description: Jellyfin media server
+home: https://jellyfin.org/
+keywords:
+  - media
+  - opensource
+  - video
+  - movies
+  - shows
+  - music
+maintainers:
+  - name: Sigurs
+    url: https://github.com/Sigurs/helm-charts
+name: jellyfin
+sources:
+  - https://github.com/Sigurs/helm-charts
+  - https://github.com/jellyfin/jellyfin
+version: 0.1.1
