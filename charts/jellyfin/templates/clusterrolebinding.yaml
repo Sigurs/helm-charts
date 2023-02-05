@@ -16,5 +16,5 @@ roleRef:
   name: {{ template "common.names.fullname" . }}
 subjects:
   - kind: ServiceAccount
-    name: {{ template "%%TEMPLATE_NAME%%.serviceAccountName" . }}
+    name: {{ template "jellyfin.serviceAccountName" . }}
     namespace: {{ include "common.names.namespace" . | quote }}

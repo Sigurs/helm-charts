@@ -28,5 +28,5 @@ In order to replicate the container startup scripts execute this command:
 
 {{- end }}
 
-{{- include "common.warnings.rollingTag" .Values.jellyfin.image }}
-{{- include "%%TEMPLATE_NAME%%.validateValues" . }}
+{{- include "common.warnings.rollingTag" .Values.image }}
+{{- include "jellyfin.validateValues" . }}

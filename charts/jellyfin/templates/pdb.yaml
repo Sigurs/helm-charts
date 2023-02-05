@@ -1,5 +1,5 @@
-{{- $replicaCount := int .Values.jellyfin.replicaCount }}
-{{- if and .Values.jellyfin.pdb.create (or (gt $replicaCount 1) .Values.jellyfin.autoscaling.enabled) }}
+{{- $replicaCount := int .Values.replicaCount }}
+{{- if and .Values.pdb.create (or (gt $replicaCount 1) .Values.autoscaling.enabled) }}
 apiVersion: {{ include "common.capabilities.policy.apiVersion" . }}
 kind: PodDisruptionBudget
 metadata:
@@ -14,11 +14,11 @@ metadata:
   annotations: {{- include "common.tplvalues.render" ( dict "value" .Values.commonAnnotations "context" $ ) | nindent 4 }}
   {{- end }}
 spec:
-  {{- if .Values.jellyfin.pdb.minAvailable }}
-  minAvailable: {{ .Values.jellyfin.pdb.minAvailable }}
+  {{- if .Values.pdb.minAvailable }}
+  minAvailable: {{ .Values.pdb.minAvailable }}
   {{- end  }}
-  {{- if .Values.jellyfin.pdb.maxUnavailable }}
-  maxUnavailable: {{ .Values.jellyfin.pdb.maxUnavailable }}
+  {{- if .Values.pdb.maxUnavailable }}
+  maxUnavailable: {{ .Values.pdb.maxUnavailable }}
   {{- end  }}
   selector:
     matchLabels: {{- include "common.labels.matchLabels" . | nindent 6 }}
