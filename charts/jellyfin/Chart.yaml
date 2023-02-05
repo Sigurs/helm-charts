@@ -8,7 +8,7 @@ dependencies:
     repository: https://charts.bitnami.com/bitnami
     tags:
       - bitnami-common
-    version: 2.2.3
+    version: 2.x.x
 description: Jellyfin media server
 home: https://jellyfin.org/
 keywords:
