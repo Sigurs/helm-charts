@@ -335,7 +335,7 @@ initContainers: []
 service:
   ## @param service.type Jellyfin service type
   ##
-  type: LoadBalancer
+  type: ClusterIP
   ## @param service.ports.http Jellyfin service HTTP port
   ## @param service.ports.https Jellyfin service HTTPS port
   ##
