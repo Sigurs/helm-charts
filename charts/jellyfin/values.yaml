@@ -228,20 +228,7 @@ pdb:
   create: false
   minAvailable: 1
   maxUnavailable: ""
-## Autoscaling configuration
-## ref: https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/
-## @param jellyfin.autoscaling.enabled Enable autoscaling for jellyfin
-## @param jellyfin.autoscaling.minReplicas Minimum number of jellyfin replicas
-## @param jellyfin.autoscaling.maxReplicas Maximum number of jellyfin replicas
-## @param jellyfin.autoscaling.targetCPU Target CPU utilization percentage
-## @param jellyfin.autoscaling.targetMemory Target Memory utilization percentage
-##
-autoscaling:
-  enabled: false
-  minReplicas: ""
-  maxReplicas: ""
-  targetCPU: ""
-  targetMemory: ""
+
 ## Node jellyfin.affinity preset
 ## ref: https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#node-affinity
 ##
@@ -280,12 +267,6 @@ updateStrategy:
   ## Can be set to RollingUpdate or OnDelete
   ##
   type: RollingUpdate
-
-## ONLY FOR STATEFULSETS
-## @param jellyfin.podManagementPolicy Statefulset Pod management policy, it needs to be Parallel to be able to complete the cluster join
-## Ref: https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/#pod-management-policies
-##
-podManagementPolicy: OrderedReady
 
 ## @param jellyfin.priorityClassName Jellyfin pods' priorityClassName
 ##
