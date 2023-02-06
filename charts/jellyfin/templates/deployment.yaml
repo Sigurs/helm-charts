@@ -143,7 +143,7 @@ spec:
           lifecycle: {{- include "common.tplvalues.render" (dict "value" .Values.lifecycleHooks "context" $) | nindent 12 }}
           {{- end }}
           volumeMounts:
-            - name: {{ default (include "common.names.fullname" .) .Values.persistence.existingClaim }}
+            - name: {{ default (include "common.names.fullname" .) .Values.persistence.existingClaim }}-data
               mountPath: {{ .Values.persistence.mountPath }}
               {{- if .Values.persistence.subPath }}
               subPath: {{ .Values.persistence.subPath }}
@@ -155,7 +155,7 @@ spec:
         {{- include "common.tplvalues.render" ( dict "value" .Values.sidecars "context" $) | nindent 8 }}
         {{- end }}
       volumes:
-        - name: {{ default (include "common.names.fullname" .) .Values.persistence.existingClaim }}
+        - name: {{ default (include "common.names.fullname" .) .Values.persistence.existingClaim }}-data
         {{- if .Values.persistence.enabled }}
           persistentVolumeClaim:
             claimName: {{ default (include "common.names.fullname" .) .Values.persistence.existingClaim }}
