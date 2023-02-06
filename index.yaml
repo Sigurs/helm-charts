@@ -1,5 +1,33 @@
 apiVersion: v1
 entries:
+  5etools:
+  - annotations:
+      category: gaming
+      licenses: Apache-2.0
+    apiVersion: v2
+    appVersion: latest
+    created: "2023-02-06T23:28:43.208078162Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 2.x.x
+    description: 5etools
+    digest: 5534a238319e27b43b4127a7193c96fe52b9853aa7f595c528875ab11674b2c1
+    home: https://5e.tools/
+    keywords:
+    - gaming
+    maintainers:
+    - name: Sigurs
+      url: https://github.com/Sigurs/helm-charts
+    name: 5etools
+    sources:
+    - https://github.com/Sigurs/helm-charts
+    - https://5e.tools/
+    urls:
+    - https://github.com/Sigurs/helm-charts/releases/download/5etools-0.1.14/5etools-0.1.14.tgz
+    version: 0.1.14
   jellyfin:
   - annotations:
       category: media
