@@ -6,6 +6,38 @@ entries:
       licenses: Apache-2.0
     apiVersion: v2
     appVersion: latest
+    created: "2023-02-06T15:36:31.085023959Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 2.x.x
+    description: Jellyfin media server
+    digest: 50826b2c334268a4859b658be50efdaf57010da69792b314b084ee1206a49732
+    home: https://jellyfin.org/
+    keywords:
+    - media
+    - opensource
+    - video
+    - movies
+    - shows
+    - music
+    maintainers:
+    - name: Sigurs
+      url: https://github.com/Sigurs/helm-charts
+    name: jellyfin
+    sources:
+    - https://github.com/Sigurs/helm-charts
+    - https://github.com/jellyfin/jellyfin
+    urls:
+    - https://github.com/Sigurs/helm-charts/releases/download/jellyfin-0.1.12/jellyfin-0.1.12.tgz
+    version: 0.1.12
+  - annotations:
+      category: media
+      licenses: Apache-2.0
+    apiVersion: v2
+    appVersion: latest
     created: "2023-02-05T22:18:03.962357301Z"
     dependencies:
     - name: common
