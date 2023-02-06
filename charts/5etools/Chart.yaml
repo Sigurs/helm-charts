@@ -1,0 +1,23 @@
+annotations:
+  category: gaming
+  licenses: Apache-2.0
+apiVersion: v2
+appVersion: latest
+dependencies:
+  - name: common
+    repository: https://charts.bitnami.com/bitnami
+    tags:
+      - bitnami-common
+    version: 2.x.x
+description: 5etools
+home: https://5e.tools/
+keywords:
+  - gaming
+maintainers:
+  - name: Sigurs
+    url: https://github.com/Sigurs/helm-charts
+name: 5etools
+sources:
+  - https://github.com/Sigurs/helm-charts
+  - https://5e.tools/
+version: 0.1.14
