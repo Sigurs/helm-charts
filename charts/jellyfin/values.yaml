@@ -523,7 +523,8 @@ persistence:
   storageClass: ""
   ## @param persistence.annotations Persistent Volume Claim annotations
   ##
-  annotations: {}
+  annotations:
+    helm.sh/resource-policy: keep
   ## @param persistence.accessModes Persistent Volume Access Modes
   ##
   accessModes:
