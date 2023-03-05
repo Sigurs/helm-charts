@@ -477,4 +477,29 @@ entries:
     urls:
     - https://github.com/Sigurs/helm-charts/releases/download/jellyfin-0.1.1/jellyfin-0.1.1.tgz
     version: 0.1.1
+  microservice:
+  - annotations:
+      licenses: Apache-2.0
+    apiVersion: v2
+    appVersion: latest
+    created: "2023-03-05T10:51:40.764386177Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 2.x.x
+    description: Microservice generic chart
+    digest: 36075fdec00136a30676ea2f5872801f5f2ff096918f62dbf68bba51629d9ba9
+    home: https://github.com/Sigurs/helm-charts
+    maintainers:
+    - name: Sigurs
+      url: https://github.com/Sigurs/helm-charts
+    name: microservice
+    sources:
+    - https://github.com/Sigurs/helm-charts
+    - https://charts.bitnami.com/bitnami
+    urls:
+    - https://github.com/Sigurs/helm-charts/releases/download/microservice-0.1.15/microservice-0.1.15.tgz
+    version: 0.1.15
 generated: "2023-02-05T19:19:30.02646134Z"
