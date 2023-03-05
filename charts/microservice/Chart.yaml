@@ -1,0 +1,21 @@
+annotations:
+  licenses: Apache-2.0
+apiVersion: v2
+appVersion: latest
+dependencies:
+  - name: common
+    repository: https://charts.bitnami.com/bitnami
+    tags:
+      - bitnami-common
+    version: 2.x.x
+description: Microservice generic chart
+home: https://github.com/Sigurs/helm-charts
+keywords:
+maintainers:
+  - name: Sigurs
+    url: https://github.com/Sigurs/helm-charts
+name: microservice
+sources:
+  - https://github.com/Sigurs/helm-charts
+  - https://charts.bitnami.com/bitnami
+version: 0.1.15
