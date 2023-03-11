@@ -482,6 +482,30 @@ entries:
       licenses: Apache-2.0
     apiVersion: v2
     appVersion: latest
+    created: "2023-03-11T10:23:03.542103893Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 2.x.x
+    description: Microservice generic chart
+    digest: f0d78c94358d95b00aabe641c05a794ace1d121bf357baa7e6eab780ae243e09
+    home: https://github.com/Sigurs/helm-charts
+    maintainers:
+    - name: Sigurs
+      url: https://github.com/Sigurs/helm-charts
+    name: microservice
+    sources:
+    - https://github.com/Sigurs/helm-charts
+    - https://charts.bitnami.com/bitnami
+    urls:
+    - https://github.com/Sigurs/helm-charts/releases/download/microservice-0.1.16/microservice-0.1.16.tgz
+    version: 0.1.16
+  - annotations:
+      licenses: Apache-2.0
+    apiVersion: v2
+    appVersion: latest
     created: "2023-03-05T10:51:40.764386177Z"
     dependencies:
     - name: common
