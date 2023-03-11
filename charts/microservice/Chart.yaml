@@ -18,4 +18,4 @@ name: microservice
 sources:
   - https://github.com/Sigurs/helm-charts
   - https://charts.bitnami.com/bitnami
-version: 0.1.15
+version: 0.1.16
