@@ -65,8 +65,8 @@ spec:
       terminationGracePeriodSeconds: {{ .Values.terminationGracePeriodSeconds }}
       {{- end }}
       initContainers:
-        {{- if and .Values.volumePermissions.enabled .Values.persistence.enabled }}
-        - name: volume-permissions
+        {{- if and .Values.volumePermissions.enabled .Values.persistence.data.enabled }}
+        - name: volume-permissions-data
           image: {{ include "jellyfin.volumePermissions.image" . }}
           imagePullPolicy: {{ .Values.volumePermissions.image.pullPolicy | quote }}
           securityContext: {{- include "common.tplvalues.render" (dict "value" .Values.volumePermissions.containerSecurityContext "context" $) | nindent 12 }}
@@ -74,10 +74,25 @@ spec:
           resources: {{- toYaml .Values.volumePermissions.resources | nindent 12 }}
           {{- end }}
           volumeMounts:
-            - name: {{ default (include "common.names.fullname" .) .Values.persistence.existingClaim }}
-              mountPath: {{ .Values.persistence.mountPath }}
-              {{- if .Values.persistence.subPath }}
-              subPath: {{ .Values.persistence.subPath }}
+            - name: {{ default (include "common.names.fullname" .) .Values.persistence.data.existingClaim }}-data
+              mountPath: {{ .Values.persistence.data.mountPath }}
+              {{- if .Values.persistenceconfig.subPath }}
+              subPath: {{ .Values.persistence.data.subPath }}
+              {{- end }}
+        {{- end }}
+        {{- if and .Values.volumePermissions.enabled .Values.persistence.media.enabled }}
+        - name: volume-permissions-media
+          image: {{ include "jellyfin.volumePermissions.image" . }}
+          imagePullPolicy: {{ .Values.volumePermissions.image.pullPolicy | quote }}
+          securityContext: {{- include "common.tplvalues.render" (dict "value" .Values.volumePermissions.containerSecurityContext "context" $) | nindent 12 }}
+          {{- if .Values.volumePermissions.resources }}
+          resources: {{- toYaml .Values.volumePermissions.resources | nindent 12 }}
+          {{- end }}
+          volumeMounts:
+            - name: {{ default (include "common.names.fullname" .) .Values.persistence.media.existingClaim }}-media
+              mountPath: {{ .Values.persistence.media.mountPath }}
+              {{- if .Values.persistence.media.subPath }}
+              subPath: {{ .Values.persistence.media.subPath }}
               {{- end }}
         {{- end }}
         {{- if .Values.initContainers }}
@@ -143,10 +158,15 @@ spec:
           lifecycle: {{- include "common.tplvalues.render" (dict "value" .Values.lifecycleHooks "context" $) | nindent 12 }}
           {{- end }}
           volumeMounts:
-            - name: {{ default (include "common.names.fullname" .) .Values.persistence.existingClaim }}-data
-              mountPath: {{ .Values.persistence.mountPath }}
-              {{- if .Values.persistence.subPath }}
-              subPath: {{ .Values.persistence.subPath }}
+            - name: {{ default (include "common.names.fullname" .) .Values.persistence.data.existingClaim }}-data
+              mountPath: {{ .Values.persistence.data.mountPath }}
+              {{- if .Values.persistence.data.subPath }}
+              subPath: {{ .Values.persistence.data.subPath }}
+              {{- end }}
+            - name: {{ default (include "common.names.fullname" .) .Values.persistence.media.existingClaim }}-media
+              mountPath: {{ .Values.persistence.media.mountPath }}
+              {{- if .Values.persistence.media.subPath }}
+              subPath: {{ .Values.persistence.media.subPath }}
               {{- end }}
           {{- if .Values.extraVolumeMounts }}
           {{- include "common.tplvalues.render" (dict "value" .Values.extraVolumeMounts "context" $) | nindent 12 }}
@@ -155,10 +175,17 @@ spec:
         {{- include "common.tplvalues.render" ( dict "value" .Values.sidecars "context" $) | nindent 8 }}
         {{- end }}
       volumes:
-        - name: {{ default (include "common.names.fullname" .) .Values.persistence.existingClaim }}-data
-        {{- if .Values.persistence.enabled }}
+        - name: {{ default (include "common.names.fullname" .) .Values.persistence.data.existingClaim }}-data
+        {{- if .Values.persistence.data.enabled }}
           persistentVolumeClaim:
-            claimName: {{ default (include "common.names.fullname" .) .Values.persistence.existingClaim }}
+            claimName: {{ default (include "common.names.fullname" .) .Values.persistence.data.existingClaim }}-data
+        {{- else }}
+          emptyDir: {}
+        {{- end }}
+        - name: {{ default (include "common.names.fullname" .) .Values.persistence.media.existingClaim }}-media
+        {{- if .Values.persistence.media.enabled }}
+          persistentVolumeClaim:
+            claimName: {{ default (include "common.names.fullname" .) .Values.persistence.media.existingClaim }}-media
         {{- else }}
           emptyDir: {}
         {{- end }}

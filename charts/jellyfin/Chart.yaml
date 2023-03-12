@@ -25,4 +25,4 @@ name: jellyfin
 sources:
   - https://github.com/Sigurs/helm-charts
   - https://github.com/jellyfin/jellyfin
-version: 0.1.15
+version: 0.1.16

@@ -1,0 +1,36 @@
+{{- if and .Values.persistence.data.enabled (not .Values.persistence.data.existingClaim) -}}
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: {{ include "common.names.fullname" . }}-data
+  namespace: {{ include "common.names.namespace" . | quote }}
+  labels: {{- include "common.labels.standard" . | nindent 4 }}
+    app.kubernetes.io/component: jellyfin
+    {{- if .Values.commonLabels }}
+    {{- include "common.tplvalues.render" ( dict "value" .Values.commonLabels "context" $ ) | nindent 4 }}
+    {{- end }}
+  {{- if or .Values.persistence.data.annotations .Values.commonAnnotations }}
+  annotations:
+    {{- if .Values.persistence.data.annotations }}
+    {{- include "common.tplvalues.render" ( dict "value" .Values.persistence.data.annotations "context" $ ) | nindent 4 }}
+    {{- end }}
+    {{- if .Values.commonAnnotations }}
+    {{- include "common.tplvalues.render" ( dict "value" .Values.commonAnnotations "context" $ ) | nindent 4 }}
+    {{- end }}
+  {{- end }}
+spec:
+  accessModes:
+  {{- range .Values.persistence.data.accessModes }}
+    - {{ . | quote }}
+  {{- end }}
+  resources:
+    requests:
+      storage: {{ .Values.persistence.data.size | quote }}
+  {{- if .Values.persistence.data.selector }}
+  selector: {{- include "common.tplvalues.render" (dict "value" .Values.persistence.data.selector "context" $) | nindent 4 }}
+  {{- end }}
+  {{- if .Values.persistence.data.dataSource }}
+  dataSource: {{- include "common.tplvalues.render" (dict "value" .Values.persistence.data.dataSource "context" $) | nindent 4 }}
+  {{- end }}
+  {{- include "common.storage.class" (dict "persistence" .Values.persistence "global" .Values.global) | nindent 2 }}
+{{- end -}}
