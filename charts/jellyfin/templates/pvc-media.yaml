@@ -32,5 +32,5 @@ spec:
   {{- if .Values.persistence.media.dataSource }}
   dataSource: {{- include "common.tplvalues.render" (dict "value" .Values.persistence.media.dataSource "context" $) | nindent 4 }}
   {{- end }}
-  {{- include "common.storage.class" (dict "persistence" .Values.persistence "global" .Values.global) | nindent 2 }}
+  {{- include "common.storage.class" (dict "persistence" .Values.persistence.media "global" .Values.global) | nindent 2 }}
 {{- end -}}
